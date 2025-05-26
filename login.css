@@ -1,6 +1,6 @@
 
 :root {
-    --mid-font:"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    /* --mid-font:"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, "Noto Sans", sans-serif; */
     --mid-border-radi:3px;
     --mid-color1:#5271ff;
     
@@ -11,7 +11,7 @@
     "M PLUS Rounded 1c",
     "Microsoft YaHei", sans-serif; */
     
-    /* --emo-font: "Kosugi Maru", sans-serif; */
+    --emo-font:"Kosugi Maru", sans-serif;
     --emo-border-radi:8px;
     --emo-color1:#5271ff;
     
@@ -22,7 +22,7 @@ box-sizing: border-box;
 
 body {
 margin: 0;
-font-family: var(--mid-font);
+font-family: var(--emo-font);
 background-color: #f4f4f8;
 display: flex;
 justify-content: center;
