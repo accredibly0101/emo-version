@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 export async function updateLessonProgressUI() {
     const username = getUsername();
-    const userRef = doc(db, "users", username);
+    const userRef = doc(db, "emo_users", username);
 
     const docSnap = await getDoc(userRef);
     if (!docSnap.exists()) return;
