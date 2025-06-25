@@ -13,12 +13,13 @@ window.addEventListener('DOMContentLoaded', () => {
     updateLessonProgressUI();
 });
 
-
 export async function updateLessonProgressUI() {
     const username = getUsername();
-    const userRef = doc(db, "emo_users", username);
+    if (!username) return;
 
-    const docSnap = await getDoc(userRef);
+    const userRef = doc(db, "emo_users", username);
+    const docSnap = await getDoc(userRef, { source: 'server' }); // 避免讀到舊資料
+
     if (!docSnap.exists()) return;
 
     const data = docSnap.data();
@@ -30,47 +31,32 @@ export async function updateLessonProgressUI() {
         let videoId = null;
 
         if (item.dataset.src) {
-            // ➔ course_video.html：從 data-src 裡解析
             try {
                 const url = new URL(item.dataset.src);
-                videoId = url.pathname.split("/")[2]; // e.g., "R5b3yt-bTL0"
+                videoId = url.pathname.split("/")[2];
             } catch (e) {
                 console.error("Invalid data-src URL:", item.dataset.src);
             }
         } else if (item.href) {
-            // ➔ course_info.html：從 href 裡解析
             try {
                 const url = new URL(item.href, window.location.origin);
                 const lessonParam = url.searchParams.get('lesson');
                 if (lessonParam) {
-                    videoId = lessonParam.split(" ")[0]; // e.g., "1-1"
+                    videoId = lessonParam.split(" ")[0];
                 }
             } catch (e) {
                 console.error("Invalid href URL:", item.href);
             }
         }
 
-        if (!videoId) return; // 找不到 id 就跳過
+        if (!videoId) return;
 
         const info = videos[videoId];
         const percent = (info && info.percentWatched !== undefined) ? info.percentWatched : 0;
 
-        // 避免重複加上 percent
-        if (item.querySelector(".progress-percent")) return;
-
-        // const percentTag = document.createElement("span");
-        // percentTag.className = "progress-percent";
-        // percentTag.textContent = `${percent}%`;
-        // percentTag.style.fontSize = "0.85em";
-        // percentTag.style.color = percent >= 80 ? "green" : "#888f96";
-        // percentTag.style.fontWeight = percent >= 80 ? "700" : "600";
-        // percentTag.style.position = "absolute";
-        // percentTag.style.right = "10px";
-        // percentTag.style.top = "50%";
-        // percentTag.style.transform = "translateY(-50%)";
-
-        // item.style.position = "relative";
-        // item.appendChild(percentTag);
+        // 先移除再建立
+        const oldPercent = item.querySelector(".circle-progress");
+        if (oldPercent) oldPercent.remove();
         
         // 建立百分比UI(圖形)
         const progressWrapper = document.createElement("div");

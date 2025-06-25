@@ -13,7 +13,7 @@
 <!-- 課程資訊頁面 -->
 <header>
     <div class="left-section">
-        <a href="mid_index.html" class="logo"></a>
+        <a href="emo_index.html" class="logo"></a>
     </div>
     <div class="right-section">
         <div class="user-section" id="userInfo">使用者同學</div>
@@ -30,7 +30,9 @@
         <span>共14堂/約1-2周</span>
     </div>
     <div class="course-details">
-        <p><strong>課程介紹：</strong><br>「訊息與介面設計」為淡江教育科技學系的碩班必修課程，從網站心理學、架構規劃到介面與視覺設計，系統化介紹UI(User Interface)設計流程與UX(User Experience)的實務應用。適合0基礎的初學者掌握介面設計的核心概念。</p>
+        <p style="white-space: pre-wrap;"><strong>課程介紹：</strong><br>你是否曾對網站介面感到困惑，或好奇為何有些設計讓人一看就覺得舒服？
+「訊息與介面設計」是淡江教育科技學系碩班的必修課，專為對 UI／UX 設計感興趣、但毫無基礎的你而設計。
+在課程中，我們將從使用者心理出發，帶你理解介面邏輯、網頁結構與視覺呈現的設計思維。</p>
         <p><strong>授課教師：</strong><br>淡江大學教育科技學系 沈俊毅 副教授</p>
     </div>
     <div class="lesson-list"><strong>課程清單</strong></div> 
@@ -67,12 +69,10 @@
     </div>    
 </div>
 </body>
-<!-- <script type="module" src="/firebase/config.js"></script> -->
 <script type="module" src="/firebase/percent_UI.js"></script>
 <script type="module" src="/firebase/pagetime.js"></script>
-<script type="module" src="/firebase/firebase-announcements.js"></script>
-<!-- 開發者工具 -->
-<!-- <script src="/firebase/dev_tools.js"></script> -->
+<script type="module" src="/firebase/commons.js"></script>
+
 <script>
     function setVideoInfo(title, videoId) {
         localStorage.setItem('selectedLesson', title);
