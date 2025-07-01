@@ -16,7 +16,7 @@ let lumoData;
 // 根據時間分配屬性
 if (hour >= 5 && hour <= 10) {
     lumoData = {
-    image: 'img/lumo/emo-Lumo-index/emo-wake.png',
+    image: 'img/Lumo/emo-Lumo-index/emo-wake.png',
     texts: [
         '天又亮了，<br>完全不顧及我困不困，說亮就亮',
         '清晨不是用來清醒的，<br>是用來後悔沒早睡的。',
@@ -25,7 +25,7 @@ if (hour >= 5 && hour <= 10) {
     };
 } else if (hour >= 11 && hour <= 15) {
     lumoData = {
-    image: 'img/lumo/emo-Lumo-index/emo-middle.png',
+    image: 'img/Lumo/emo-Lumo-index/emo-middle.png',
     texts: [
         '你學習的樣子，<br>讓我想起我昨天沒做完的計畫',
         '今天看起來…<br>有要學點東西的樣子欸',
@@ -34,7 +34,7 @@ if (hour >= 5 && hour <= 10) {
     };
 } else if (hour >= 16 && hour <= 20) {
     lumoData = {
-    image: 'img/lumo/emo-Lumo-index/emo-bath.png',
+    image: 'img/Lumo/emo-Lumo-index/emo-bath.png',
     texts: [
         '我每次都覺得下午小睡...<br>睡得比晚上還好',
         '晚餐到底要吃什麼啊?',
@@ -44,7 +44,7 @@ if (hour >= 5 && hour <= 10) {
 // 晚上9點到12點
 } else if (hour >=21  && hour <= 23) {
     lumoData = {
-    image: 'img/lumo/emo-Lumo-index/emo-night-1.png',
+    image: 'img/Lumo/emo-Lumo-index/emo-night-1.png',
     texts: [
         '太喜歡熬夜了，<br>有種和閻王單挑的感覺',
         '認真的你和床一樣有吸引力<br>...騙你的，還是床更有吸引力zz',
@@ -54,7 +54,7 @@ if (hour >= 5 && hour <= 10) {
 // 凌晨0點到5點
 } else {
     lumoData = {
-    image: 'img/lumo/emo-Lumo-index/emo-night-2.png',
+    image: 'img/Lumo/emo-Lumo-index/emo-night-2.png',
     texts: [
         '不是，人類<br>你甚麼時候才要休息?',
         '我發誓再也不熬夜了，<br>如果再熬夜我就再發誓',
