@@ -99,5 +99,11 @@ setInterval(() => {
     showText(lumoData.texts[textIndex]);
 }, 30000); // 1分鐘
 
+// 使用者點擊 Lumo 時，切換到下一句話
+lumoEl.addEventListener("click", () => {
+    textIndex = (textIndex + 1) % lumoData.texts.length;
+    showText(lumoData.texts[textIndex]);
+});
+
 
 });

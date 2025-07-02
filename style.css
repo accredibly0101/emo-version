@@ -112,7 +112,7 @@ header {
     justify-content: center; /* 垂直置中 */
     align-items: center;  
     width: inherit;
-    height: 40vh;
+    height: 45vh;
     /* border: solid 1px rgb(8, 8, 8); */
     /* background-color: rgb(171, 171, 171); */
     margin: 2vh 0;
@@ -372,14 +372,16 @@ header {
 
 /* lumo main */
 .lumo {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 250px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     margin: 0 auto;
     opacity: 0;
+    flex-shrink: 0; 
     animation: fadeIn 1.2s ease-out forwards, floaty 5s ease-in-out infinite;
+    overflow: hidden;
 }
 
 /* 淡入動畫 */
@@ -407,11 +409,14 @@ header {
     line-height: 1.5;
     color: #444;
     text-align: center;
-    margin: 0 0 15px 0;
+    margin: 0;
     min-height: auto;
     white-space: pre-wrap;
     font-family: var(--emo-font);
     background-color: rgb(253, 233, 206);
     border-radius: var(--emo-border-radi);
     padding: 5px;
+    max-width: 90%;  /* 或你要的寬度限制 */
+    word-break: break-word;
+    
 }
