@@ -40,7 +40,7 @@ try {
 
         const statusMsg = document.getElementById("todayStatusMsg");
         if (statusMsg) {
-            statusMsg.innerText = `📌 完成觀看影片總數：${watchedCount} 部`;
+            statusMsg.innerText = `📌 總共完成觀看 ${watchedCount} 部影片！`;
         }
     } catch (e) {
         console.error("❌ 發生錯誤：", e);
