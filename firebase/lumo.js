@@ -22,7 +22,8 @@ if (hour >= 5 && hour <= 10) {
         '清晨不是用來清醒的，<br>是用來後悔沒早睡的。🫠',
         '人和動物是會共情的，<br>開始理解公雞為什麼會早上起來然後尖叫😍',
         '設這麼多鬧鐘，是為了提醒自己還有幾分鐘可以睡',
-        '我最遠的通勤距離，<br>就是從床到書桌',
+        '我最遠的通勤距離，就是從床到書桌',
+        '早上最困難的任務，就是思考中午該吃甚麼'
     ]
     };
 } else if (hour >= 11 && hour <= 15) {
@@ -77,42 +78,93 @@ if (hour >= 5 && hour <= 10) {
 // 設定圖片
 lumoEl.style.backgroundImage = `url('${lumoData.image}')`;
 
-// 動畫字句輪播
+// 設定圖片
+lumoEl.style.backgroundImage = `url('${lumoData.image}')`;
+
 let textIndex = 0;
+let isTyping = false;
+let typingTimeoutId = null;
+let typingToken = 0;
+
 function showText(text) {
-    textEl.innerHTML = '';  // 用 innerHTML 才能解析 <br>
-    let i = 0;
-    const speed = 50;
+typingToken++;
+const myToken = typingToken;
 
+if (typingTimeoutId) clearTimeout(typingTimeoutId);
+
+textEl.innerHTML = '';
+let i = 0;
+const speed = 60;
+
+return new Promise((resolve) => {
     function typeChar() {
-        // 逐字打出時，不能直接用 text.charAt(i)，要處理 HTML tag
-        // 我們這裡直接一字一字打 innerHTML，簡單但夠用
-        if (i < text.length) {
-        const currentChar = text.slice(0, i + 1);
-        textEl.innerHTML = currentChar;
-        i++;
-        setTimeout(typeChar, speed);
-        }
-    }
+    if (myToken !== typingToken) return;
 
+    if (i < text.length) {
+        textEl.innerHTML = text.slice(0, i + 1);
+        i++;
+        typingTimeoutId = setTimeout(typeChar, speed);
+    } else {
+        typingTimeoutId = null;
+        resolve();
+    }
+    }
     typeChar();
+});
 }
 
+// ✅ 第一次顯示：隨機挑一句，進頁就播放
+async function initLumoText() {
+textIndex = Math.floor(Math.random() * lumoData.texts.length);
+isTyping = true;
+await showText(lumoData.texts[textIndex]);
+isTyping = false;
+}
 
-// 第一次顯示
-showText(lumoData.texts[textIndex]);
+initLumoText();
 
-// 每 10 秒換一次
-setInterval(() => {
-    textIndex = (textIndex + 1) % lumoData.texts.length;
-    showText(lumoData.texts[textIndex]);
-}, 10000); // 1分鐘
+lumoEl.addEventListener("click", async (e) => {
+// （可選）避免冒泡造成重複觸發
+e.stopPropagation();
 
-// 使用者點擊 Lumo 時，切換到下一句話
-lumoEl.addEventListener("click", () => {
-    textIndex = (textIndex + 1) % lumoData.texts.length;
-    showText(lumoData.texts[textIndex]);
+if (isTyping) return;
+isTyping = true;
+
+// 跳一下
+lumoEl.classList.remove("lumo-jump");
+void lumoEl.offsetWidth;
+lumoEl.classList.add("lumo-jump");
+
+// 換句：下一句
+textIndex = (textIndex + 1) % lumoData.texts.length;
+await showText(lumoData.texts[textIndex]);
+
+isTyping = false;
 });
+
+// // 第一次顯示
+// showText(lumoData.texts[textIndex]);
+
+// // 每 10 秒換一次
+// setInterval(() => {
+//     textIndex = (textIndex + 1) % lumoData.texts.length;
+//     showText(lumoData.texts[textIndex]);
+// }, 10000); // 1分鐘
+
+// lumoEl.addEventListener("click", () => {
+//     console.count("lumo click");
+
+//     // 跳一下
+//     lumoEl.classList.remove("lumo-jump");
+//     void lumoEl.offsetWidth;
+//     lumoEl.classList.add("lumo-jump");
+
+//     // 0.2 秒後換文字
+//     setTimeout(() => {
+//         textIndex = (textIndex + 1) % lumoData.texts.length;
+//         showText(lumoData.texts[textIndex]);
+//     }, 200);
+// });
 
 
 });

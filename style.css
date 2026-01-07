@@ -378,18 +378,12 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     margin: 0 auto;
-    opacity: 0;
+    opacity: 1;
     flex-shrink: 0; 
-    animation: fadeIn 1.2s ease-out forwards, floaty 5s ease-in-out infinite;
+    animation: floaty 5s ease-in-out infinite;
     overflow: hidden;
 }
 
-/* 淡入動畫 */
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
 
 /* 漂浮 + 微晃動動畫 */
 @keyframes floaty {
@@ -403,6 +397,21 @@ header {
         transform: translateY(0px) rotate(1deg);
     }
 }
+
+/* 吉祥物跳動動畫 */
+@keyframes lumo-jump {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-18px); }
+    60%  { transform: translateY(0); }
+    80%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+/* 觸發用 class */
+.lumo-jump {
+    animation: lumo-jump 0.45s ease-out;
+}
+
 
 .lumo-text {
     font-size: 16px;
@@ -420,3 +429,4 @@ header {
     word-break: break-word;
     
 }
+
