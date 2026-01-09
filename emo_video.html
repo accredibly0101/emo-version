@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/favicon.ico?v=1">
     <title>LUMO Learning - 課程影片觀看</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +29,9 @@
     <div class="course-name">訊息與介面設計</div>
     <div class="video-title">課程標題</div>
     <div id="player"></div>
+    <div id="resume-hint">已跳回上次觀看紀錄：</div>
     <div class="lesson-list"></div> 
-    <div class="lesson-container">
+    <div class="lesson-container" data-unit="unit1">
         <div class="lesson-header">第一單元</div>
         <div class="lesson-items">
             <div class="lesson-item" data-src="https://www.youtube.com/embed/R5b3yt-bTL0">1-1 網站心理學</div>
@@ -40,7 +42,7 @@
         </div>
     </div>
 
-    <div class="lesson-container">
+    <div class="lesson-container" data-unit="unit2">
         <div class="lesson-header">第二單元</div>
         <div class="lesson-items">
             <div class="lesson-item" data-src="https://www.youtube.com/embed/sQWTDBN6cYA">2-1 網站目標與策略</div>
@@ -50,8 +52,8 @@
             <div class="lesson-item" data-src="https://www.youtube.com/embed/TFYeCQfj2dg">2-5 介面元件設計</div>
         </div>
     </div>
-    
-    <div class="lesson-container">
+
+    <div class="lesson-container" data-unit="unit3">
         <div class="lesson-header">第三單元</div>
         <div class="lesson-items">
             <div class="lesson-item" data-src="https://www.youtube.com/embed/WajU-OYqjl4">3-1 經驗價值與需求呈現</div>

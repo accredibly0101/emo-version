@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico?v=1">
     <link rel="stylesheet" href="style.css">
     <title>LUMO Learning - 課程資訊：訊息與介面設計</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +37,7 @@
         <p><strong>授課教師：</strong><br>淡江大學教育科技學系 沈俊毅 副教授</p>
     </div>
     <div class="lesson-list"><strong>課程清單</strong></div> 
-    <div class="lesson-container">
+    <div class="lesson-container" data-unit="unit1">
         <div class="lesson-header">第一單元</div>
         <div class="lesson-items">
             <a href="emo_video.html" class="lesson-item" data-src="https://www.youtube.com/embed/R5b3yt-bTL0" onclick="setVideoInfo('1-1 網站心理學', 'R5b3yt-bTL0')">1-1 網站心理學</a>
@@ -46,8 +47,8 @@
             <a href="emo_video.html" class="lesson-item" data-src="https://www.youtube.com/embed/3MCbC9y7OqU" onclick="setVideoInfo('1-5 人物模型', '3MCbC9y7OqU')">1-5 人物模型</a>
         </div>
     </div>
-    
-    <div class="lesson-container">
+
+    <div class="lesson-container" data-unit="unit2">
         <div class="lesson-header">第二單元</div>
         <div class="lesson-items">
             <a href="emo_video.html" class="lesson-item" data-src="https://www.youtube.com/embed/sQWTDBN6cYA" onclick="setVideoInfo('2-1 網站目標與策略', 'sQWTDBN6cYA')">2-1 網站目標與策略</a>
@@ -57,8 +58,8 @@
             <a href="emo_video.html" class="lesson-item" data-src="https://www.youtube.com/embed/TFYeCQfj2dg" onclick="setVideoInfo('2-5 介面元件設計', 'TFYeCQfj2dg')">2-5 介面元件設計</a>
         </div>
     </div>
-    
-    <div class="lesson-container">
+
+    <div class="lesson-container" data-unit="unit3">
         <div class="lesson-header">第三單元</div>
         <div class="lesson-items">
             <a href="emo_video.html" class="lesson-item" data-src="https://www.youtube.com/embed/WajU-OYqjl4" onclick="setVideoInfo('3-1 經驗價值與需求呈現', 'WajU-OYqjl4')">3-1 經驗價值與需求呈現</a>
@@ -78,5 +79,4 @@
         localStorage.setItem('selectedVideoId', videoId);
         }
 </script>
-<!-- <script type="module" src="/firebase/clean_pagetime.js"></script> -->
 </html>
