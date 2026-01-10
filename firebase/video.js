@@ -8,12 +8,17 @@ import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/fi
 工具：取得純標題文字（排除 percent span）
 ---------------------------- */
 function getLessonTitleOnly(el) {
-if (!el) return "";
-const clone = el.cloneNode(true);
-const percent = clone.querySelector(".progress-percent");
-if (percent) percent.remove();
-return clone.textContent.trim();
+    if (!el) return "";
+    const clone = el.cloneNode(true);
+
+    // 兼容舊版與新版進度 UI
+    clone.querySelectorAll(
+        ".progress-percent, .circle-progress, .bar-progress, .bar-text"
+    ).forEach(n => n.remove());
+
+    return clone.textContent.trim();
 }
+
 
 /* ---------------------------
 工具：從 data-src 抽 videoId
@@ -37,7 +42,7 @@ if (!videoId) return;
 const unitKey = videoToUnit[videoId];
 if (!unitKey) {
     showLockedMessage("此影片不存在或尚未開放");
-    window.location.replace("mid_index.html");
+    window.location.replace("emo_index.html");
     return;
 }
 
@@ -48,7 +53,7 @@ if (!open) {
     localStorage.removeItem("currentVideoId");
     localStorage.removeItem("currentVideoTitle");
 
-    window.location.replace("mid_video.html"); // 依你的檔名調整
+    window.location.replace("emo_video.html"); // 依你的檔名調整
     return;
 }
 })();
@@ -85,7 +90,7 @@ Firestore 參考
 ---------------------------- */
 const username = getUsername();
 // 若 username 可能為空，至少不要 throw
-const userRef = doc(db, "mid-users", username || "anonymous");
+const userRef = doc(db, "emo_users", username || "anonymous");
 
 /* =========================
 ✅ 續播（localStorage 心跳）設定

@@ -327,7 +327,7 @@ header {
     border-radius: var(--emo-border-radi);
 }
 
-/* 介面樣式：百分比UI的圖形 */
+介面樣式：百分比UI的圖形
 .circle-progress {
     width: 20px;
     height: 20px;
@@ -363,6 +363,47 @@ header {
 .circular-chart.green .circle {
     stroke: #4caf50;
 }
+
+/* 長條圖 */
+.bar-progress{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.bar-track{
+width:80px;          /* 長條寬度你可調 */
+height:8px;
+background:#e8eef8;
+border-radius:999px;
+overflow:hidden;
+}
+
+.bar-fill{
+height:100%;
+width:0%;
+background:var(--emo-color1);  /* 預設藍色 */
+border-radius:999px;
+transition:width .25s ease;
+}
+
+/* >=80% 變綠色（跟你原本邏輯一致） */
+.bar-progress[data-good="1"] .bar-fill{
+background:#2ecc71;
+}
+
+.bar-text{
+font-size:12px;
+color:#4b5563;
+min-width:34px; /* 讓 0% ~ 100% 不會跳 */
+text-align:right;
+}
+
+
 
 #player {
     margin: 5px 0;

@@ -55,25 +55,19 @@ export async function updateLessonProgressUI() {
         const percent = (info && info.percentWatched !== undefined) ? info.percentWatched : 0;
 
         // 先移除再建立
-        const oldPercent = item.querySelector(".circle-progress");
+        const oldPercent = item.querySelector(".bar-progress, .circle-progress");
         if (oldPercent) oldPercent.remove();
-        
-        // 建立百分比UI(圖形)
+
+        // 建立百分比UI（長條）
         const progressWrapper = document.createElement("div");
-        progressWrapper.className = "circle-progress";
+        progressWrapper.className = "bar-progress";
+        progressWrapper.dataset.good = percent >= 80 ? "1" : "0";
         progressWrapper.innerHTML = `
-        <svg viewBox="0 0 36 36" class="circular-chart ${percent >= 80 ? 'green' : '#439cfb'}">
-        <path class="circle-bg"
-                d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831"/>
-        <path class="circle"
-                stroke-dasharray="${percent}, 100"
-                d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831"/>
-        </svg>
-    `;
+        <div class="bar-track" aria-label="progress">
+            <div class="bar-fill" style="width:${Math.max(0, Math.min(100, percent))}%"></div>
+        </div>
+        <div class="bar-text">${Math.round(percent)}%</div>
+        `;
 
         progressWrapper.style.position = "absolute";
         progressWrapper.style.right = "10px";
@@ -81,6 +75,7 @@ export async function updateLessonProgressUI() {
         progressWrapper.style.transform = "translateY(-50%)";
         item.style.position = "relative";
         item.appendChild(progressWrapper);
+
 
     });
 }
