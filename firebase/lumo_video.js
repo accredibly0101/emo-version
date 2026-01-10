@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // 🎲 一組 = 圖 + 多句文字
     const lumoSets = [
         {
-        image: "./img/Lumo/emo-Lumo-video/lean1.png",
+        image: "./img/Lumo/emo-Lumo-video/lean1.webp",
         texts: [
             "如果...你有空的話，要不要回首頁看看大隻的我，拜託啦",
             "如果能一句話說出重點，代表你真的理解了",
@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ]
         },
         {
-        image: "./img/Lumo/emo-Lumo-video/lean2.png",
+        image: "./img/Lumo/emo-Lumo-video/lean2.webp",
         texts: [
             "如果覺得分心，先暫停影片，深呼吸三次再繼續吧",
             "專注不是逼自己，而是幫自己創造好環境",
@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ]
         },
         {
-        image: "./img/Lumo/emo-Lumo-video/lean3.png",
+        image: "./img/Lumo/emo-Lumo-video/lean3.webp",
         texts: [
             "就算只記住一個重點，那也還不錯了吧？",
             "你不需要完美，只需要持續出現。",
@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ]
         },        
         {
-        image: "./img/Lumo/emo-Lumo-video/sit1.png",
+        image: "./img/Lumo/emo-Lumo-video/sit1.webp",
         texts: [
             "像你這麼認真的人真的很少見！",
             "願意學習這件事本身就很了不起",
@@ -45,7 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ]
         },
                 {
-        image: "./img/Lumo/emo-Lumo-video/sit2.png",
+        image: "./img/Lumo/emo-Lumo-video/sit2.webp",
         texts: [
             "不用急著全部懂，等等再回來也可以",
             "邊看邊點頭其實很有幫助（但不要被別人看到）",
@@ -54,7 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ]
         },
         {
-        image: "./img/Lumo/emo-Lumo-video/sit3.png",
+        image: "./img/Lumo/emo-Lumo-video/sit3.webp",
         texts: [
             "行動塑造了自我認同，你現在就是一個愛學習的人！",
             "你願意學習這件事本身就很了不起，陪你看的我也挺了不起",
@@ -109,7 +109,7 @@ window.addEventListener("DOMContentLoaded", () => {
         textEl.classList.remove("lumo-fade-out");
 
         isAnimating = false;
-        }, 400);
+        }, 200);
     }
 
     // 初次顯示
