@@ -411,7 +411,7 @@ text-align:right;
     font-size: 10px;
 }
 
-/* lumo main */
+/* lumo 首頁*/
 .lumo {
     width: 250px;
     height: 250px;
@@ -470,6 +470,51 @@ text-align:right;
     word-break: break-word;
     
 }
+
+/* lumo 影片頁面 */
+.lumo-container {
+    display: flex;
+    justify-content: flex-end; /* 🔥 整組往右 */
+    align-items: center;
+    margin-right: 10px;        /* 若你想留一點右側空間 */
+}
+
+.video-lumo {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 8px;
+    margin-left: -15px;
+    z-index: 2;
+}
+
+.video-lumotext {
+    max-width: 220px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    background: #f7f7f7;
+    padding: 5px 15px;
+    border-radius: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.video-lumo,
+.video-lumotext {
+    transition: opacity 0.2s ease; /* 🌿 淡入淡出速度 */
+}
+
+.lumo-fade-out {
+    opacity: 0;
+}
+
+.lumo-fade-in {
+    opacity: 1;
+}
+
 
 /* 影片清單鎖定 */
 .locked {
