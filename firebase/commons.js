@@ -9,7 +9,7 @@ onAuthStateChanged(auth, user => {
     if (!user) {
         // 沒登入 ➜ 導回首頁（或登入頁）
         // alert(`請先登入後再進行學習`);
-        window.location.href = "mid_login.html";
+        window.location.href = "emo_login.html";
     }
 });
 
@@ -115,7 +115,7 @@ document.getElementById("logout-btn").addEventListener("click", () => {
 import { createPageTimeTracker } from "./pageTimeTracker.js";
 
 const tracker = createPageTimeTracker({
-    collection: "mid-users",
+    collection: "emo_users",
     flushEverySeconds: 5,
     maxTickSeconds: 30,           // 防爆：每次 tick 最多補 30 秒
     maxPendingFlushSeconds: 300,  // 防爆：一次寫入最多 300 秒

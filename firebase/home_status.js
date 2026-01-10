@@ -16,7 +16,7 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     /** 🔑 用 Auth uid 當 docId */
-    const userRef = doc(db, "mid-users", user.uid);
+    const userRef = doc(db, "emo_users", user.uid);
 
     /** 📅 台灣格式日期（YYYY-MM-DD） */
     const today = new Date().toLocaleDateString('zh-TW', {

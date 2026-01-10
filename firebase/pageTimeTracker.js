@@ -4,7 +4,7 @@ import { doc, updateDoc, setDoc, increment } from
 
 /**
  * @param {Object} options
- * @param {string} [options.collection="mid-users"] Firestore collection name
+ * @param {string} [options.collection="emo_users"] Firestore collection name
  * @param {string} [options.pageName] Page name override (default: filename without .html)
  * @param {number} [options.flushEverySeconds=5] Interval seconds for tick+flush
  * @param {number} [options.maxTickSeconds=30] Cap seconds added per tick (anti-explosion)
@@ -13,7 +13,7 @@ import { doc, updateDoc, setDoc, increment } from
  */
 export function createPageTimeTracker(options = {}) {
 const {
-    collection = "mid-users",
+    collection = "emo_users",
     pageName: pageNameFromOptions,
     flushEverySeconds = 5,
 
