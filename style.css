@@ -523,7 +523,7 @@ text-align:right;
 }
 
 .locked .lesson-header::after {
-    content: " (尚未開放)🔒";
+    content: " (尚未解鎖)🔒";
     font-size: 0.9em;
 }
 .lesson-container.locked .lesson-item,

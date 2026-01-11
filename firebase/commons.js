@@ -39,7 +39,7 @@ document.querySelectorAll(".lesson-container[data-unit]").forEach(container => {
             e.stopPropagation();
             e.stopImmediatePropagation?.();
 
-            showLockedMessage(`「${container.querySelector(".lesson-header")?.textContent}」尚未開放`);
+            showLockedMessage(`「${container.querySelector(".lesson-header")?.textContent}」還沒開放哦!`);
         },
         { capture: true } // ⭐ 關鍵：先攔截
         );
