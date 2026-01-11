@@ -1,3 +1,19 @@
+const lumoImages = [
+    "./img/Lumo/mid-Lumo-video/lean1.webp",
+    "./img/Lumo/mid-Lumo-video/lean2.webp",
+    "./img/Lumo/mid-Lumo-video/lean3.webp",
+    "./img/Lumo/mid-Lumo-video/sit1.webp",
+    "./img/Lumo/mid-Lumo-video/sit2.webp",
+    "./img/Lumo/mid-Lumo-video/sit3.webp",
+];
+
+// ✅ 預載
+lumoImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
+});
+
+
 window.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".lumo-container");
     const lumoEl = document.querySelector(".video-lumo");
