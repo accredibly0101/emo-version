@@ -372,11 +372,11 @@ top:50%;
 transform:translateY(-50%);
 display:flex;
 align-items:center;
-gap:8px;
+gap:1px;
 }
 
 .bar-track{
-width:80px;          /* 長條寬度你可調 */
+width:70px;          /* 長條寬度你可調 */
 height:10px;
 background:#e8eef8;
 border-radius:999px;

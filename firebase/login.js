@@ -60,7 +60,9 @@ document.getElementById("register-btn").addEventListener("click", async () => {
             displayName,
             studentID,
             email
-        }
+        },
+        status: "active",
+        expiresAt: null
         });
 
         alert("註冊成功！請重新登入");

@@ -4,14 +4,7 @@ import { onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.4.0/fir
 
 const announcementsContainer = document.getElementById("announcements-container");
 
-//是否有登入？
-onAuthStateChanged(auth, user => {
-    if (!user) {
-        // 沒登入 ➜ 導回首頁（或登入頁）
-        alert(`請先登入後再進行學習`);
-        window.location.href = "emo_login.html";
-    }
-});
+
 
 // 課程清單依照日期解鎖
 import { loadReleaseConfig, isUnitOpen, setLocked, showLockedMessage, getNowInTaipei } from "./releaseGate.js";
@@ -123,3 +116,11 @@ const tracker = createPageTimeTracker({
 });
 
 tracker.start();
+
+//是否有登入？
+onAuthStateChanged(auth, user => {
+    if (!user) {
+        // 沒登入 ➜ 導回首頁（或登入頁）
+        window.location.href = "emo_login.html";
+    }
+});
