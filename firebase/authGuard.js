@@ -1,6 +1,42 @@
 import { auth, db } from "./config.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import { doc, getDoc, setDoc, serverTimestamp, Timestamp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+
+const MS_14_DAYS = 14 * 24 * 60 * 60 * 1000;
+
+async function ensureExpiry14DaysIfNewUser(user) {
+    const userRef = doc(db, "emo_users", user.uid);
+
+    // 第一次讀
+    let snap = await getDoc(userRef);
+    if (!snap.exists()) return; // 沒文件就不處理
+
+    let data = snap.data();
+
+    // ✅ 只處理「從現在開始的新註冊」：用 createdAt 是否存在來判斷
+    if (!data.createdAt) return;
+
+    // 已經有 expiresAt 就不動
+    if (data.expiresAt?.toDate?.()) return;
+
+    // 先確保 activatedAt 有值（首次啟用時間）
+    if (!data.activatedAt) {
+        await setDoc(userRef, { activatedAt: serverTimestamp() }, { merge: true });
+
+        // 立刻再讀一次，拿到 server 寫回來的 activatedAt
+        snap = await getDoc(userRef);
+        if (!snap.exists()) return;
+        data = snap.data();
+    }
+
+    const activatedAtDate = data.activatedAt?.toDate?.();
+    if (!activatedAtDate) return;
+
+    const expiresAt = Timestamp.fromMillis(activatedAtDate.getTime() + MS_14_DAYS);
+
+    await setDoc(userRef, { expiresAt }, { merge: true });
+}
+
 
 let expiryTimer = null;
 
@@ -33,6 +69,7 @@ redirectExpired();
 }
 
 async function guard(user) {
+await ensureExpiry14DaysIfNewUser(user);    
 const ref = doc(db, "emo_users", user.uid);
 const snap = await getDoc(ref);
 

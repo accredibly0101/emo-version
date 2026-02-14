@@ -6,7 +6,7 @@ import {
     browserSessionPersistence,
     sendPasswordResetEmail
 } from 'https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js';
-import { doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js';
+import { doc, setDoc, getDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js';
 
 await setPersistence(auth, browserSessionPersistence)
 
@@ -62,7 +62,9 @@ document.getElementById("register-btn").addEventListener("click", async () => {
             email
         },
         status: "active",
-        expiresAt: null
+        expiresAt: null,
+        createdAt: serverTimestamp(),
+        activatedAt: null
         });
 
         alert("註冊成功！請重新登入");
